@@ -1,0 +1,14 @@
+#formulario{
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+h2{
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    border-radius: 15px;
+    margin: 3px
+}
