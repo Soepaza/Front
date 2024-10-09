@@ -1,30 +1,27 @@
 import './CadastroUser.css';
 
 function CadastroUser(){
-
     let nome = "Soe";
     let profissao = "Dev dos bom"
 
-    function soma(){
-        return 2+5;
+    async function salvar(){
+        let dados = await fetch("http://localhost:8000/h2-console/api/produtos/salvar");
+    
+        let resposta = await dados.json();
+
+        if (resposta.ok){
+                console.log(resposta)
+                return
+        }
+        console.log(resposta)
     }
 
-    function operation(n1, n2){
-        return n1*n2;
-    }
 
-    const multi = (n3, n4) => n3 * n4 
-
-    const sum = (x , y) => x + y
 
     return(
         <div id="formulario">
             <form>
                 {nome}, {profissao}<br/>
-                Soma = {soma()}<br/>
-                Operação = {operation(7, 4)}<br/>
-                multiplicacao = {multi(10,5)}<br/>
-                somando = {sum(10, 50)}
                 <h2>Cadastre-se</h2>
                 <label htmlFor='nome'>Nome</label>
                 <input type='text' name='nome' id='nome'/>
@@ -38,10 +35,10 @@ function CadastroUser(){
                 <label htmlFor='Password'>Password</label>
                 <input type='password' name='Password' id='Password'/>
 
-                <input type='button' value="Cadastra-se"/>
+                <input onClick={salvar} type='button' value="Cadastra-se"/>
             </form>
         </div>
-    )
+    );
 
 }
 
